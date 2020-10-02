@@ -1,0 +1,47 @@
+{% extends "Layout.twig.html" %}
+
+{% block content %}
+    <h1>Medialis TodoList Test</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="todolist not-done">
+                    
+                    <input id="message" type="text" class="form-control add-todo" placeholder="Add todo">
+                    <button id="addTodoListButton" class="btn btn-success">Add</button>
+                    
+                    <hr />
+                    
+                    <ul id="sortable" class="list-unstyled">
+                        
+                        {% for item in items %}
+                        
+                        <li class="checkbox" id="checkItem-{{ item.id }}">
+                            <div >
+                                <label>
+                                    <input id="checkItemButton-{{ item.id }}" class="check" type="checkbox" value="{{ item.checked }}" />{{ item.message }}</label>
+                                </div>
+                            </li>
+                            
+                            {% endfor %}
+                        </ul>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <a href="/logout">
+                        logout
+                    </a>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="/js/todolist.js"></script>
+{% endblock %}
